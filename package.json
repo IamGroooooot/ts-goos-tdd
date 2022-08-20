@@ -1,0 +1,21 @@
+{
+  "name": "ts-goos-tdd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Juhyeong Ko",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@types/node": "^18.7.8",
+    "http-server": "^14.1.1",
+    "selenium-webdriver": "^4.4.0"
+  }
+}

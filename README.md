@@ -126,12 +126,73 @@ redis-cli
 #### sniper.cy.ts 구현
 
 책을 보며 sniper.cy.ts를 구현한다
+Application Runner와 테스트코드를 작성한다.
+
+```typescript
+class ApplicationRunner {
+  private driver: AuctionSniperDriver | null; // java가 null을 지원하다보니 이렇게..
+
+  constructor() {
+    this.driver = new AuctionSniperDriver(1000);
+  }
+  public startSellingItem(auction: any) {
+    this.driver?.showsSniperStatus('joining'); // ES6 symbol을 넣고 싶다.
+  }
+
+  public showsSniperHasLostAuction() {
+    this.driver?.showsSniperStatus('lost');
+  }
+}
+```
+
+```typescript
+describe('Auction sniper e2e test', () => {
+  let auction: FakeAuctionServer;
+  let application: ApplicationRunner;
+
+  beforeEach(() => {
+    auction = new FakeAuctionServer('item-54321');
+    application = new ApplicationRunner();
+  });
+
+  it('sniper joins auction util autcion closes', () => {
+    auction.startSellingItem();
+    application.startSellingItem(auction);
+    auction.hasReceivedJoinRequestFromSniper();
+    auction.announceClosed();
+    //application.showsSniperHasLostAuction();
+  });
+});
+```
 
 ### 8. main.ts와 app(app/index.html) 구현
 
-### 9. app을 실행하기 위한 app 실행 스크립트 구현
+`app/index.html`를 만든다.
 
-package.json에 스크립트 추가
+여기서 app.js를 불러와서 main 함수를 실행할 수 있도록 한다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+      import Main from '/js/main.js';
+      new Main();
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+### 9. app 실행 스크립트 구현
+
+app을 실행하기 위한 작업을 합니다.
+
+#### 9-1. `package.json`에 스크립트 추가
 
 ```json
 "scripts": {
@@ -139,16 +200,31 @@ package.json에 스크립트 추가
 }
 ```
 
-app 실행
+#### 9-2. app 실행
 
 ```bash
 yarn app
 ```
 
-app js에 자동으로 컴파일해서 띄워준다.
+코드의 변경이 일어날 때 마다 `app.js`에 자동으로 컴파일해준다.
 
-##### 참고
+#### 9-3. Fake Server와 Driver를 구현한다
 
 - sniper.cy.ts
 - fake-auction-server.ts
 - auction-sniper-driver.ts
+
+### 10. Test가 통과하도록 main함수를 만든다
+
+src/main.ts
+
+```typescript
+export default class Main {
+  constructor(itemId: string) {
+    const status = document.createElement('div');
+    status.id = 'sniper-status';
+    status.textContent = 'joining';
+    document.body.appendChild(status);
+  }
+}
+```

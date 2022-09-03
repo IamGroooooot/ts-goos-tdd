@@ -141,7 +141,7 @@ redis-cli
 #### 테스트(`sniper.cy.ts`)를 구현하자
 
 책을 보며 `sniper.cy.ts`를 구현한다
-`Application Runner`와 책에 나온 단계별로 auction에 관한 `테스트 코드`를 작성한다.
+`Application Runner`와 책에 나온 단계별로 auction에 관한 것을 수행하는 `테스트 코드`를 작성한다.
 
 ```typescript
 class ApplicationRunner {

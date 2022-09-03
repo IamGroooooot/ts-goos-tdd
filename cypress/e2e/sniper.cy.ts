@@ -1,4 +1,5 @@
 import { AuctionSniperDriver } from './auction-sniper-driver';
+import { FakeAuctionServer } from './fake-auction-server';
 
 /**
  * @note

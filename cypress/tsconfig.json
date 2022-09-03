@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.json", // tsconfig 상속
+  "compilerOptions": {
+    "types": ["node", "cypress"] // code completion을 위해 cypress 타입 추가
+  }
+}

@@ -1,12 +1,12 @@
 # GOOS 실습
 
-## Dependency
+## Dependency 설치
 
 ```bash
 yarn add -D cypress http-server tsc-watch typescript
 ```
 
-## Cypress Setting
+## Cypress 테스트 통과시키기
 
 ### 1. Cypress 실행
 
@@ -85,7 +85,7 @@ tsconfig를 상속해서 사용하면 편하다.
 
 ### 6. Create new empty spec
 
-다시 `npx cpress open`해서
+다시 `npx cypress open`해서
 E2E testing > Create new empty spec 버튼을 클릭해서 새로운 테스트 파일을 만들어보자.
 
 #### 6-1. `cypress/e2e/sniper.cy.ts` 생성

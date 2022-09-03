@@ -86,7 +86,7 @@ Create new empty spec
 
 다음과 같이 떠야 함
 
-```
+```text
 Missing baseUrl in compilerOptions. tsconfig-paths will be skipped
 GET /__/ 200 1.218 ms - -
 GET /__/assets/index.5606b365.css 200 3.124 ms - -
@@ -100,3 +100,35 @@ GOOS 책 101p, 102p 참고해서 코드 작성
 
 > 5단계로 이루어진다.
 > \1. when an auction is selling an item, 2. And and Auctin sinper has started to bid that auction, 3. ...
+
+#### Redis 설치
+
+책에서 나오는 XMPP 프로토콜 대신 Redis 사용하기 때문에 Redis를 설치해준다
+
+\[MAC 기준\] Redis 설치
+
+```bash
+brew install redis
+```
+
+Redis 구동
+
+```bash
+redis-server
+```
+
+Redis CLI Client로 테스트
+
+```bash
+redis-cli
+```
+
+#### sniper.cy.ts 구현
+
+책을 보며 sniper.cy.ts를 구현한다
+
+##### 참고
+
+- sniper.cy.ts
+- fake-auction-server.ts
+- auction-sniper-driver.ts

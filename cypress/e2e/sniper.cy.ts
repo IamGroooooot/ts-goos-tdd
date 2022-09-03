@@ -10,12 +10,12 @@ class ApplicationRunner {
   constructor() {
     this.driver = null;
   }
+  public startSellingItem(auction: any) {
+    this.driver = new AuctionSniperDriver(1000);
+    this.driver?.showsSniperStatus('joining'); // ES6 symbol을 넣고 싶다.
+  }
 
   public showsSniperHasLostAuction() {
-    this.driver = new AuctionSniperDriver(1000);
-    this.driver.showsSniperStatus('joining'); // ES6 symbol을 넣고 싶다.
-  }
-  public startSellingItem(auction: any) {
     this.driver?.showsSniperStatus('lost');
   }
 }

@@ -10,5 +10,8 @@
     "http-server": "^14.1.1",
     "tsc-watch": "^5.0.3",
     "typescript": "^4.8.2"
+  },
+  "scripts": {
+    "app": "tsc-watch src/main.ts -t es6 --outDir app/js --onSuccess \"http-server app -p 3000\""
   }
 }

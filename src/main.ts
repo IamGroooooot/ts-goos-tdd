@@ -1,4 +1,4 @@
-export class Main {
+export default class Main {
   constructor(itemId: string) {
     const status = document.createElement('div');
     status.id = 'sniper-status';

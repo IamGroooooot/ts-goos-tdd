@@ -127,6 +127,26 @@ redis-cli
 
 책을 보며 sniper.cy.ts를 구현한다
 
+### 8. main.ts와 app(app/index.html) 구현
+
+### 9. app을 실행하기 위한 app 실행 스크립트 구현
+
+package.json에 스크립트 추가
+
+```json
+"scripts": {
+  "app": "tsc-watch src/main.ts -t es6 --outDir app/js --onSuccess \"http-server app -p 3000\""
+}
+```
+
+app 실행
+
+```bash
+yarn app
+```
+
+app js에 자동으로 컴파일해서 띄워준다.
+
 ##### 참고
 
 - sniper.cy.ts

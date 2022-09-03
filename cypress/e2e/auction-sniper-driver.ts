@@ -1,6 +1,7 @@
 export class AuctionSniperDriver {
   constructor(timeoutMillis: number) {
     Cypress.config('defaultCommandTimeout', timeoutMillis);
+    cy.visit('http://localhost:3000');
   }
 
   // 실제 웹 페이지에서 statusText값이 'lost'인지 'joining'인지
